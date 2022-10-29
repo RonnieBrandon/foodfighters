@@ -18,7 +18,7 @@ Jätä fronttiterminaali käyntiin, avaa toinen terminaali-ikkuna sekä navigoi 
 Tämän jälkeen aja komento:  
 ```npm install```  
 Odota pakettien asennus loppuun, jonka jälkeen saat backendin pystyyn komennolla:  
-````npm start```
+```npm start```
 
 Navigoi osoitteeseen http://localhost:4200/ ja sovellus on nyt käytössäsi.
 
