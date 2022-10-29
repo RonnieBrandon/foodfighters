@@ -52,7 +52,7 @@ export class AppComponent {
         this.createFoodFighter(randomItem, fighterNumber);
       },
       err => {
-        console.log(err);
+        console.error(err);
       }
     );
   }
