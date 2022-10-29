@@ -16,7 +16,7 @@ Odota pakettien asennus loppuun, jonka jälkeen saat frontin pystyyn komennolla:
 Jätä fronttiterminaali käyntiin, avaa toinen terminaali-ikkuna sekä navigoi backend-hakemistoon ja asenna NestJS ajamalla komento:  
 ```npm install -g @nestjs/cli```  
 Tämän jälkeen aja komento:  
-````npm install```  
+```npm install```  
 Odota pakettien asennus loppuun, jonka jälkeen saat backendin pystyyn komennolla:  
 ````npm start```
 
