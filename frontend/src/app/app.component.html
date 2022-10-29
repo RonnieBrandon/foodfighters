@@ -1,0 +1,119 @@
+<nav>
+   <mat-toolbar color="primary">
+      <div class="custom-font">
+         <span class="logo-space-maker">Food</span>
+         <mat-icon>fastfood</mat-icon>
+         <mat-icon>sports_martial_arts</mat-icon>
+         <span>Fighters</span>
+      </div>
+   </mat-toolbar>
+</nav>
+<div class="flex-wrapper">
+<main>
+   <h1 class="main-view-header">Ruokataistelijat</h1>
+   <div class="row">
+      <div class="column">
+         <div class="card" [ngStyle]="{'height': (selected1stFighter | json) === '{}' && (selected2ndFighter | json) !== '{}' ? '256px' : '' }">
+            <div>
+               Etsi ruokaa:
+               <mat-icon class="card-action-icon" (click)="clearSelectedFighter(1)" pTooltip="Poista valittu taistelija" tooltipPosition="left">clear</mat-icon>
+            </div>
+            <p-autoComplete #autocomplete1stFighter [suggestions]="foodList" (completeMethod)="searchFoods($event)" (onSelect)="createFoodFighter($event, 1)" (onClear)="autocompleteCleared($event, 1)"
+               field="name.fi" [minLength]="1" [forceSelection]="true" placeholder='esim. "hampurilainen"' [style]="{'width':'95%'}" [inputStyle]="{'width':'95%'}"></p-autoComplete>
+            <mat-icon class="card-action-icon" (click)="selectRandomFood(1)" pTooltip="Arvo taistelija" tooltipPosition="left">shuffle</mat-icon>
+            <div *ngIf="selected1stFighter.name">
+               <div class="card-header">
+                  <b>{{ selected1stFighter.name }}</b> (<i>{{ selected1stFighter.category }}</i>)
+               </div>
+               <div class="fighter-emoji-list">
+                  <table>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Energia" tooltipPosition="top">⚡</td>
+                       <td>{{ selected1stFighter.health }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Hyökkäys" tooltipPosition="top">🗡️</td>
+                       <td>{{ selected1stFighter.attack }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Puolustus" tooltipPosition="top">🛡️</td>
+                       <td>{{ selected1stFighter.defence }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Viive" tooltipPosition="top">🕛</td>
+                       <td>{{ selected1stFighter.delay }}</td>
+                     </tr>
+                   </table>
+               </div>
+            </div>
+            <div class="fighter-not-selected" *ngIf="(selected1stFighter | json) === '{}' && (selected2ndFighter | json) !== '{}'">
+               <mat-icon>not_interested</mat-icon> Taistelijaa ei valittuna
+            </div>
+         </div>
+      </div>
+      <div class="column">
+         <div class="card" [ngStyle]="{'height': (selected2ndFighter | json) === '{}' && (selected1stFighter | json) !== '{}' ? '256px' : '' }">
+            <div>
+               Etsi ruokaa: 
+               <mat-icon class="card-action-icon" (click)="clearSelectedFighter(2)" pTooltip="Poista valittu taistelija" tooltipPosition="left">clear</mat-icon>
+            </div>
+            <p-autoComplete #autocomplete2ndFighter [suggestions]="foodList" (completeMethod)="searchFoods($event)" (onSelect)="createFoodFighter($event, 2)" (onClear)="autocompleteCleared($event, 2)"
+            field="name.fi" [minLength]="1" [forceSelection]="true" placeholder='esim. "hot dog"' [style]="{'width':'95%'}" [inputStyle]="{'width':'95%'}"></p-autoComplete>
+            <mat-icon  class="card-action-icon" (click)="selectRandomFood(2)" pTooltip="Arvo taistelija" tooltipPosition="left">shuffle</mat-icon>
+            <div *ngIf="selected2ndFighter.name">
+               <div class="card-header">
+                  <b>{{ selected2ndFighter.name }}</b> (<i>{{ selected2ndFighter.category }}</i>)
+               </div>
+               <div class="fighter-emoji-list">
+                  <table>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Energia" tooltipPosition="top">⚡</td>
+                       <td>{{ selected2ndFighter.health }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Hyökkäys" tooltipPosition="top">🗡️</td>
+                       <td>{{ selected2ndFighter.attack }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Puolustus" tooltipPosition="top">🛡️</td>
+                       <td>{{ selected2ndFighter.defence }}</td>
+                     </tr>
+                     <tr>
+                       <td class="emoji-container" pTooltip="Viive" tooltipPosition="top">🕛</td>
+                       <td>{{ selected2ndFighter.delay }}</td>
+                     </tr>
+                   </table>
+               </div>
+            </div>
+            <div class="fighter-not-selected" *ngIf="(selected2ndFighter | json) === '{}' && (selected1stFighter | json) !== '{}'">
+               <mat-icon>not_interested</mat-icon> Taistelijaa ei valittuna
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="fight-btn-container">
+      <span [pTooltip]="getTooltipForDisabledFightBtn()" tooltipPosition="top">
+         <button pButton type="button" label="Taistelkaa!" [disabled]="(!selected1stFighter.name || !selected2ndFighter.name) || (selected1stFighter.name === selected2ndFighter.name)" (click)="startMatch()"></button>
+      </span>
+   </div>
+   <div class="row" *ngIf="showMatchReport">
+      <div class="match-report-column">
+         <div class="card match-report-text">
+            {{ matchReport }}
+         </div>
+      </div>
+   </div>
+</main>
+</div>
+<footer>
+   <mat-toolbar color="primary">
+      <div class="custom-font">
+         <div class="footer-content">
+            Created by Roni Brandt 
+            <span class="linkedin-logo-container" pTooltip="Avaa LinkedIn-profiili uudessa välilehdessä" (click)="openRonisLinkedInProfile()">
+               <img src="../assets/images/5296501_linkedin_network_linkedin logo_icon.svg" alt="LinkedIn" width="4%" height="4%"/>
+            </span>
+         </div>
+      </div>
+   </mat-toolbar>
+</footer>

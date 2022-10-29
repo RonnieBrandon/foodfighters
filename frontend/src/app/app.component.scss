@@ -1,0 +1,155 @@
+.logo-space-maker {
+  margin-right: 5px;
+}
+
+.mat-toolbar.mat-primary {
+  background: #b83c44;
+  color: #fff;
+}
+
+.custom-font {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.main-view-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.card-action-icon {
+  float: right;
+  cursor: pointer;
+}
+
+.p-button {
+  background: #b83c44;
+  border: #b83c44;
+}
+
+@media screen and (max-width: 600px) {
+  .p-button {
+    margin-bottom: 20px;
+ }
+}
+
+.p-button:disabled:hover {
+  cursor: not-allowed;
+  background: #b83c44;
+}
+
+.p-button:hover {
+  background: #6d181e;
+}
+
+.p-button:focus {
+  background: #b83c44;
+}
+
+.row {
+  margin: 0 10px;
+  margin-top: 10px;
+ }
+ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+ }
+}
+
+.match-report-column {
+  margin: auto;
+  display: table;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .match-report-column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+ }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  background-color: #f1f1f1;
+  border-radius: 10pt;
+  min-height: 115px;
+}
+
+.flex-wrapper {
+    min-height: 70%;
+    min-height: -webkit-calc(100% - 148px);
+    min-height: -moz-calc(100% - 148px);
+    min-height: calc(100% - 148px);
+}
+
+@media screen and (max-width: 600px) {
+  .flex-wrapper {
+    min-height: -webkit-calc(100% - 130px);
+    min-height: -moz-calc(100% - 130px);
+    min-height: calc(100% - 130px);
+ }
+}
+
+.linkedin-logo-container {
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  vertical-align:middle;
+}
+
+.footer-content {
+  font-size: 17px;
+  font-weight: normal;
+}
+
+:host ::ng-deep .p-autocomplete .p-autocomplete-loader {
+  right: 3.75rem !important;
+}
+
+.fighter-not-selected {
+  margin-top: 50px;
+  font-size: large;
+  color: #b83c44;
+  text-align: center;
+}
+
+.fighter-emoji-list {
+  font-size: 17px;
+}
+
+.emoji-container {
+  cursor: default;
+  margin-right: 10px;
+}
+
+.fight-btn-container {
+  justify-content: center;
+  display: flex;
+  margin-top: 10px;
+}
+
+.match-report-text {
+  white-space: pre-line;
+}
